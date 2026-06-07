@@ -110,21 +110,6 @@ export default function SafetyTips({ isRtl }: SafetyTipsProps) {
         {/* 双栏对齐 - Two Columns split layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border border-slate-200 rounded-2xl overflow-hidden shadow-sm bg-slate-50/40">
           
-          {/* Left panel (English - LTR) */}
-          <div className="p-6 space-y-3 font-sans text-left border-b md:border-b-0 md:border-r border-slate-200">
-            <div className="text-sky-700 font-extrabold text-xs tracking-wider uppercase mb-1">
-              General Guidelines:
-            </div>
-            {generalSafetyTips.map((tip, index) => (
-              <div key={tip.id} className="flex items-start gap-2.5">
-                <span className="text-red-500 font-black shrink-0 text-sm mt-0.5">•</span>
-                <p className="text-xs md:text-sm text-slate-800 font-bold leading-relaxed text-balance" style={{ textWrap: 'balance' }}>
-                  {tip.textEn}
-                </p>
-              </div>
-            ))}
-          </div>
-
           {/* Right panel (Arabic - RTL) */}
           <div className="p-6 space-y-3 font-sans text-right dir-rtl">
             <div className="text-sky-700 font-extrabold text-xs tracking-wider uppercase mb-1">
@@ -135,6 +120,21 @@ export default function SafetyTips({ isRtl }: SafetyTipsProps) {
                 <span className="text-red-500 font-black shrink-0 text-sm mt-0.5">•</span>
                 <p className="text-xs md:text-sm text-slate-800 font-bold leading-relaxed text-balance" style={{ textWrap: 'balance' }}>
                   {tip.textAr}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* Left panel (English - LTR) - WITH VERTICAL BORDER DIVIDER ON ITS RIGHT SIDE IN RTL */}
+          <div className="p-6 space-y-3 font-sans text-left border-t md:border-t-0 md:border-r border-slate-200">
+            <div className="text-sky-700 font-extrabold text-xs tracking-wider uppercase mb-1">
+              General Guidelines:
+            </div>
+            {generalSafetyTips.map((tip, index) => (
+              <div key={tip.id} className="flex items-start gap-2.5">
+                <span className="text-red-500 font-black shrink-0 text-sm mt-0.5">•</span>
+                <p className="text-xs md:text-sm text-slate-800 font-bold leading-relaxed text-balance" style={{ textWrap: 'balance' }}>
+                  {tip.textEn}
                 </p>
               </div>
             ))}

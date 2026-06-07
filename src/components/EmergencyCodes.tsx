@@ -29,7 +29,6 @@ import {
 } from 'lucide-react';
 import { emergencyCodes } from '../data';
 import { EmergencyCode } from '../types';
-import { FmsLogo } from './FmsLogo';
 
 interface EmergencyCodesProps {
   isRtl: boolean;
@@ -53,6 +52,7 @@ export default function EmergencyCodes({
   voicesLoaded
 }: EmergencyCodesProps) {
   const [selectedCode, setSelectedCode] = useState<EmergencyCode | null>(null);
+  const [showAllCodes, setShowAllCodes] = useState(false);
 
   const getCodeIcon = (iconName: string, colorClass: string) => {
     const sizeClasses = "w-6 h-6 " + colorClass;
@@ -137,8 +137,8 @@ export default function EmergencyCodes({
 
         {/* 11 Emergency rows Table Layout - Organised perfectly for mobile and desktop */}
         <div className="p-3 md:p-6 bg-slate-50/50">
-          <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden divide-y divide-slate-100 shadow-sm">
-            {emergencyCodes.map((code) => {
+          <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden divide-y divide-slate-100 shadow-sm flex flex-col">
+            {(showAllCodes ? emergencyCodes : emergencyCodes.slice(0, 2)).map((code) => {
               const isCodeActive = activeCodeId === code.id && isPlaying;
               
               return (
@@ -187,6 +187,15 @@ export default function EmergencyCodes({
                 </div>
               );
             })}
+
+            {/* View More / Show Less Toggle Button Block */}
+            <button
+              id="emergency-codes-expand-toggle"
+              onClick={() => setShowAllCodes(!showAllCodes)}
+              className="w-full py-3.5 px-4 bg-slate-50 hover:bg-slate-100 text-sky-600 hover:text-sky-700 font-sans font-black text-xs sm:text-sm text-center flex items-center justify-center gap-2 border-t border-slate-100 transition-colors cursor-pointer outline-none select-none"
+            >
+              <span>{showAllCodes ? 'عرض أقل' : 'عرض المزيد من رموز الطوارئ (+٩)'}</span>
+            </button>
           </div>
         </div>
       </div>

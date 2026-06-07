@@ -37,14 +37,14 @@ export default function SafetyFaqs({ isRtl }: SafetyFaqsProps) {
         
         {/* Column Headers */}
         <div className="grid grid-cols-1 md:grid-cols-2 text-white font-extrabold text-sm md:text-base border-b border-sky-600">
-          {/* Left Column Header (English) */}
-          <div className="bg-sky-500 text-left py-3.5 px-6 border-b md:border-b-0 md:border-r border-sky-600 tracking-wider">
-            Frequently Asked Questions & Answers
-          </div>
-          
           {/* Right Column Header (Arabic) */}
-          <div className="bg-sky-500 py-3.5 px-6 text-right dir-rtl leading-none">
+          <div className="bg-sky-500 py-3.5 px-6 text-right dir-rtl leading-none flex items-center justify-start">
             الأسئلة الشائعة والأجوبة
+          </div>
+
+          {/* Left Column Header (English) - with right border for spacer */}
+          <div className="bg-sky-500 text-left py-3.5 px-6 border-t md:border-t-0 md:border-r border-sky-600 tracking-wider flex items-center justify-start">
+            Frequently Asked Questions & Answers
           </div>
         </div>
 
@@ -56,19 +56,6 @@ export default function SafetyFaqs({ isRtl }: SafetyFaqsProps) {
               id={`faq-item-row-${index}`}
               className="grid grid-cols-1 md:grid-cols-2 hover:bg-slate-50/50 transition-colors"
             >
-              {/* Left Cell (English Q&A - LTR) */}
-              <div className="p-5.5 space-y-2 text-left border-b md:border-b-0 md:border-r border-slate-200">
-                <div className="flex items-start gap-2 text-rose-700 font-extrabold text-xs md:text-sm">
-                  <FileQuestion className="w-4.5 h-4.5 text-sky-600 shrink-0 mt-0.5" />
-                  <h4 className="leading-tight select-all text-balance" style={{ textWrap: 'balance' }}>
-                    {faq.questionEn}
-                  </h4>
-                </div>
-                <p className="text-xs md:text-sm font-bold text-slate-850 pl-6.5 leading-relaxed select-all text-balance" style={{ textWrap: 'balance' }}>
-                  {faq.answerEn}
-                </p>
-              </div>
-
               {/* Right Cell (Arabic Q&A - RTL/Cairo) */}
               <div className="p-5.5 space-y-2 text-right dir-rtl font-sans">
                 <div className="flex items-start gap-2 text-rose-700 font-black text-xs md:text-sm">
@@ -79,6 +66,19 @@ export default function SafetyFaqs({ isRtl }: SafetyFaqsProps) {
                 </div>
                 <p className="text-xs md:text-sm font-bold text-slate-850 pr-6.5 leading-relaxed select-all text-balance" style={{ textWrap: 'balance' }}>
                   {faq.answerAr}
+                </p>
+              </div>
+
+              {/* Left Cell (English Q&A - LTR) - WITH VERTICAL BORDER DIVIDER */}
+              <div className="p-5.5 space-y-2 text-left border-t md:border-t-0 md:border-r border-slate-200">
+                <div className="flex items-start gap-2 text-rose-700 font-extrabold text-xs md:text-sm">
+                  <FileQuestion className="w-4.5 h-4.5 text-sky-600 shrink-0 mt-0.5" />
+                  <h4 className="leading-tight select-all text-balance" style={{ textWrap: 'balance' }}>
+                    {faq.questionEn}
+                  </h4>
+                </div>
+                <p className="text-xs md:text-sm font-bold text-slate-850 pl-6.5 leading-relaxed select-all text-balance" style={{ textWrap: 'balance' }}>
+                  {faq.answerEn}
                 </p>
               </div>
             </div>

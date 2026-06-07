@@ -139,64 +139,8 @@ export default function DisasterPlan({ isRtl, onAnnounceCodeRed }: DisasterPlanP
         {/* RACE Split Grid Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 border border-slate-200 rounded-2xl p-6 bg-slate-50/40">
           
-          {/* ENGLISH PANEL (Left) */}
-          <div className="space-y-5 font-sans">
-            {/* R */}
-            <div className="flex items-start gap-4">
-              <span className="w-10 h-10 rounded-full bg-sky-600 text-white font-extrabold text-xl flex items-center justify-center shrink-0 shadow-sm border border-sky-400">
-                R
-              </span>
-              <div className="space-y-1">
-                <span className="text-red-650 font-black text-sm block">Rescue the patient:</span>
-                <p className="text-xs md:text-sm text-slate-700 font-bold leading-relaxed text-balance" style={{ textWrap: 'balance' }}>
-                  Safe anyone from the fire area to another safe place .
-                </p>
-              </div>
-            </div>
-
-            {/* A */}
-            <div className="flex items-start gap-4">
-              <span className="w-10 h-10 rounded-full bg-sky-600 text-white font-extrabold text-xl flex items-center justify-center shrink-0 shadow-sm border border-sky-400">
-                A
-              </span>
-              <div className="space-y-1">
-                <span className="text-red-650 font-black text-sm block">Activate Alarm:</span>
-                <ul className="text-xs md:text-sm text-slate-700 font-bold list-disc pl-4 space-y-1">
-                  <li className="text-balance" style={{ textWrap: 'balance' }}>Call Code Red .</li>
-                  <li className="text-balance" style={{ textWrap: 'balance' }}>Call the Hospital Reporting Line .</li>
-                  <li className="text-balance" style={{ textWrap: 'balance' }}>Activate Fire Alarm.</li>
-                </ul>
-              </div>
-            </div>
-
-            {/* C */}
-            <div className="flex items-start gap-4">
-              <span className="w-10 h-10 rounded-full bg-sky-600 text-white font-extrabold text-xl flex items-center justify-center shrink-0 shadow-sm border border-sky-400">
-                C
-              </span>
-              <div className="space-y-1">
-                <span className="text-red-650 font-black text-sm block">Contain Fire :</span>
-                <ul className="text-xs md:text-sm text-slate-700 font-bold list-disc pl-4 space-y-1">
-                  <li className="text-balance" style={{ textWrap: 'balance' }}>Close The Door.</li>
-                  <li className="text-balance" style={{ textWrap: 'balance' }}>Oxygen Vavle Lock.</li>
-                  <li className="text-balance" style={{ textWrap: 'balance' }}>Put Towels The Door.</li>
-                </ul>
-              </div>
-            </div>
-
-            {/* E */}
-            <div className="flex items-start gap-4">
-              <span className="w-10 h-10 rounded-full bg-sky-600 text-white font-extrabold text-xl flex items-center justify-center shrink-0 shadow-sm border border-sky-400">
-                E
-              </span>
-              <div className="space-y-1">
-                <span className="text-red-650 font-black text-sm block text-balance" style={{ textWrap: 'balance' }}>Extinguish Or EVACUATE .</span>
-              </div>
-            </div>
-          </div>
-
-          {/* ARABIC PANEL (Right) - WITH VERTICAL BORDER DIVIDER IN MIDDLE */}
-          <div className="space-y-5 font-sans dir-rtl md:border-r md:border-slate-300 md:pr-8">
+          {/* ARABIC PANEL (Right) */}
+          <div className="space-y-5 font-sans dir-rtl">
             
             {/* R */}
             <div className="flex items-start gap-4">
@@ -248,6 +192,62 @@ export default function DisasterPlan({ isRtl, onAnnounceCodeRed }: DisasterPlanP
               </span>
               <div className="space-y-1">
                 <span className="text-red-650 font-black text-sm block text-balance" style={{ textWrap: 'balance' }}>الإطفاء والإخلاء.</span>
+              </div>
+            </div>
+          </div>
+
+          {/* ENGLISH PANEL (Left) - WITH VERTICAL BORDER DIVIDER ON ITS RIGHT SIDE IN RTL */}
+          <div className="space-y-5 font-sans text-left md:border-r md:border-slate-300 md:pr-8">
+            {/* R */}
+            <div className="flex items-start gap-4">
+              <span className="w-10 h-10 rounded-full bg-sky-600 text-white font-extrabold text-xl flex items-center justify-center shrink-0 shadow-sm border border-sky-400">
+                R
+              </span>
+              <div className="space-y-1">
+                <span className="text-red-650 font-black text-sm block">Rescue the patient:</span>
+                <p className="text-xs md:text-sm text-slate-700 font-bold leading-relaxed text-balance" style={{ textWrap: 'balance' }}>
+                  Safe anyone from the fire area to another safe place .
+                </p>
+              </div>
+            </div>
+
+            {/* A */}
+            <div className="flex items-start gap-4">
+              <span className="w-10 h-10 rounded-full bg-sky-600 text-white font-extrabold text-xl flex items-center justify-center shrink-0 shadow-sm border border-sky-400">
+                A
+              </span>
+              <div className="space-y-1">
+                <span className="text-red-650 font-black text-sm block">Activate Alarm:</span>
+                <ul className="text-xs md:text-sm text-slate-700 font-bold list-disc pl-4 space-y-1">
+                  <li className="text-balance" style={{ textWrap: 'balance' }}>Call Code Red .</li>
+                  <li className="text-balance" style={{ textWrap: 'balance' }}>Call the Hospital Reporting Line .</li>
+                  <li className="text-balance" style={{ textWrap: 'balance' }}>Activate Fire Alarm.</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* C */}
+            <div className="flex items-start gap-4">
+              <span className="w-10 h-10 rounded-full bg-sky-600 text-white font-extrabold text-xl flex items-center justify-center shrink-0 shadow-sm border border-sky-400">
+                C
+              </span>
+              <div className="space-y-1">
+                <span className="text-red-650 font-black text-sm block">Contain Fire :</span>
+                <ul className="text-xs md:text-sm text-slate-700 font-bold list-disc pl-4 space-y-1">
+                  <li className="text-balance" style={{ textWrap: 'balance' }}>Close The Door.</li>
+                  <li className="text-balance" style={{ textWrap: 'balance' }}>Oxygen Vavle Lock.</li>
+                  <li className="text-balance" style={{ textWrap: 'balance' }}>Put Towels The Door.</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* E */}
+            <div className="flex items-start gap-4">
+              <span className="w-10 h-10 rounded-full bg-sky-600 text-white font-extrabold text-xl flex items-center justify-center shrink-0 shadow-sm border border-sky-400">
+                E
+              </span>
+              <div className="space-y-1">
+                <span className="text-red-650 font-black text-sm block text-balance" style={{ textWrap: 'balance' }}>Extinguish Or EVACUATE .</span>
               </div>
             </div>
           </div>
