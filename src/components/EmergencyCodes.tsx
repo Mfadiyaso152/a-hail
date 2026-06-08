@@ -41,6 +41,23 @@ interface EmergencyCodesProps {
   voicesLoaded: boolean;
 }
 
+const getArabicColorName = (color: string) => {
+  switch (color.toLowerCase()) {
+    case 'blue': return 'أزرق';
+    case 'red': return 'أحمر';
+    case 'yellow': return 'أصفر';
+    case 'pink': return 'وردي';
+    case 'orange': return 'برتقالي';
+    case 'gray': return 'رمادي';
+    case 'white': return 'أبيض';
+    case 'black': return 'أسود';
+    case 'brown': return 'بني';
+    case 'silver': return 'فضي';
+    case 'all clear': return 'زوال الخطر';
+    default: return color;
+  }
+};
+
 export default function EmergencyCodes({
   isRtl,
   activeCodeId,
@@ -115,16 +132,18 @@ export default function EmergencyCodes({
             
             <div className="w-full max-w-xl bg-sky-600 text-white py-3 px-6 rounded-full shadow-lg border border-sky-500 flex flex-col items-center justify-center">
               <h2 className="text-xl md:text-2xl font-black tracking-wide font-sans leading-none text-white">
-                رموز الطوارئ
+                {isRtl ? 'رموز الطوارئ' : 'Emergency Codes'}
               </h2>
-              <span className="text-sm font-bold tracking-widest text-sky-100 uppercase font-sans mt-1">
-                EMERGENCY CODES
-              </span>
+              {!isRtl && (
+                <span className="text-xs font-bold tracking-widest text-sky-100 uppercase font-sans mt-1 text-center">
+                  DIAL CODES & EMERGENCY RESPONSE SYSTEM
+                </span>
+              )}
             </div>
 
             {/* Red action guideline text block */}
-            <div className="font-sans font-black text-xs sm:text-sm text-red-650 tracking-wide text-center animate-pulse">
-              اضغط على الكود للانتقال الى صفحة الاجراءات
+            <div className="font-sans font-black text-xs sm:text-sm text-red-600 tracking-wide text-center animate-pulse">
+              {isRtl ? 'اضغط على الرمز للانتقال إلى صفحة الإجراءات التفصيلية' : 'Click on any code to view detailed action procedures'}
             </div>
 
           </div>
@@ -141,33 +160,42 @@ export default function EmergencyCodes({
                   key={code.id}
                   id={`er-code-row-${code.id}`}
                   onClick={() => handleClickCode(code)}
-                  className="group cursor-pointer flex items-center justify-between hover:bg-slate-50/85 active:bg-slate-100 transition-all duration-200 py-4 px-3 sm:px-4 md:px-6 relative overflow-hidden"
+                  className={`group cursor-pointer flex items-center justify-between hover:bg-slate-50/85 active:bg-slate-100 transition-all duration-200 py-4 px-3 sm:px-4 md:px-6 relative overflow-hidden ${
+                    isRtl ? 'flex-row-reverse' : ''
+                  }`}
                 >
-                  {/* Left Column/Part: Icon & English code title */}
-                  <div className="flex items-center gap-2 sm:gap-4 min-w-[110px] sm:min-w-[140px] shrink-0">
+                  {/* Icon & Unified Arabic/English Details */}
+                  <div className={`flex items-center gap-3 sm:gap-4 shrink-0 select-none ${
+                    isRtl ? 'flex-row-reverse text-right' : 'text-left'
+                  }`}>
+                    {/* Compact themed visual icon */}
                     <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-lg sm:rounded-xl bg-slate-50 border border-slate-200 shadow-3xs flex items-center justify-center transition-transform group-hover:scale-105 shrink-0">
                       {getCodeIcon(code.icon, code.textColor)}
                     </div>
                     
-                    <div className="font-sans font-black text-xs md:text-sm text-slate-800 tracking-tight uppercase select-none whitespace-nowrap underline decoration-[1.5px] decoration-slate-300 underline-offset-4 group-hover:text-sky-600 group-hover:decoration-sky-500 transition-colors">
-                      {code.nameEn}
+                    {/* Text container */}
+                    <div className="flex flex-col justify-center">
+                      <span className="font-sans font-black text-slate-900 group-hover:text-sky-600 transition-colors text-xs sm:text-sm md:text-base leading-snug">
+                        {isRtl ? (code.id === 'all_clear' ? 'زوال الخطر' : code.nameAr) : code.nameEn}
+                      </span>
+                      {!isRtl && (
+                        <span className="font-sans font-bold text-slate-500 text-[10px] md:text-xs">
+                          {code.descriptionEn}
+                        </span>
+                      )}
                     </div>
                   </div>
 
-                  {/* Middle Column/Part: Purpose translation (dynamic wrapping) */}
-                  <div className="grow text-right px-2 sm:px-4">
-                    <span className="font-sans font-bold text-slate-900 group-hover:text-sky-600 transition-colors text-xs md:text-sm leading-tight select-none break-words underline decoration-[1.5px] decoration-slate-300 underline-offset-4 group-hover:decoration-sky-600 transition-colors">
-                      {code.descriptionAr}
-                    </span>
-                  </div>
+                  {/* Empty divider spacer for clean separation */}
+                  <div className="grow" />
 
                   {/* Right Column/Part: Color Block indicator + active audio waves */}
-                  <div className="flex items-center justify-end gap-1.5 sm:gap-3 shrink-0">
+                  <div className={`flex items-center gap-1.5 sm:gap-3 shrink-0 ${isRtl ? 'flex-row-reverse' : ''}`}>
                     {isCodeActive && (
                       <div className="flex items-center gap-0.5 h-6 shrink-0">
-                        <span className="w-0.75 bg-emerald-652 rounded-full animate-bounce h-2" />
-                        <span className="w-0.75 bg-emerald-652 rounded-full animate-bounce h-4.5 animation-delay-150" />
-                        <span className="w-0.75 bg-emerald-652 rounded-full animate-bounce h-3" />
+                        <span className="w-0.75 bg-emerald-600 rounded-full animate-bounce h-2" />
+                        <span className="w-0.75 bg-emerald-600 rounded-full animate-bounce h-4.5 animation-delay-150" />
+                        <span className="w-0.75 bg-emerald-600 rounded-full animate-bounce h-3" />
                       </div>
                     )}
 
@@ -185,11 +213,11 @@ export default function EmergencyCodes({
 
             {/* View More / Show Less Toggle Button Block */}
             <button
-              id="emergency-codes-expand-toggle"
-              onClick={() => setShowAllCodes(!showAllCodes)}
-              className="w-full py-3.5 px-4 bg-slate-50 hover:bg-slate-100 text-sky-600 hover:text-sky-700 font-sans font-black text-xs sm:text-sm text-center flex items-center justify-center gap-2 border-t border-slate-100 transition-colors cursor-pointer outline-none select-none"
+               id="emergency-codes-expand-toggle"
+               onClick={() => setShowAllCodes(!showAllCodes)}
+               className="w-full py-3.5 px-4 bg-slate-50 hover:bg-slate-100 text-sky-600 hover:text-sky-700 font-sans font-black text-xs sm:text-sm text-center flex items-center justify-center gap-2 border-t border-slate-100 transition-colors cursor-pointer outline-none select-none"
             >
-              <span>{showAllCodes ? 'عرض أقل' : 'عرض المزيد من رموز الطوارئ (+٩)'}</span>
+               <span>{showAllCodes ? (isRtl ? 'عرض أقل' : 'Show Less') : (isRtl ? 'عرض المزيد من رموز الطوارئ (+٩)' : 'Show More Emergency Codes (+9)')}</span>
             </button>
           </div>
         </div>
@@ -249,94 +277,96 @@ export default function EmergencyCodes({
               {/* Inside Modal Body Content - SCROLLABLE & CENTERED */}
               <div className="space-y-6 pt-8 overflow-y-auto pr-1 pl-1 grow pb-2">
                 
-                {/* 1. ARABIC PROCEDURES CARD */}
-                <div className="rounded-2xl border border-slate-200 overflow-hidden shadow-xs">
-                  {/* Topic Red/Blue Banner exactly as in screenshots */}
-                  <div 
-                    className="py-3 px-5 text-center font-bold text-base md:text-lg text-white tracking-wide text-balance font-sans"
-                    style={{ backgroundColor: selectedCode.hexColor, textWrap: 'balance' }}
-                  >
-                    {selectedCode.id === 'all_clear' 
-                      ? 'زوال الخطر (ALL CLEAR)' 
-                      : `${selectedCode.nameAr} ( ${selectedCode.nameEn} )`}
-                  </div>
+                {isRtl ? (
+                  /* 1. ARABIC PROCEDURES CARD */
+                  <div className="rounded-2xl border border-slate-200 overflow-hidden shadow-xs">
+                    {/* Topic Red/Blue Banner exactly as in screenshots */}
+                    <div 
+                      className="py-3 px-5 text-center font-bold text-base md:text-lg text-white tracking-wide text-balance font-sans"
+                      style={{ backgroundColor: selectedCode.hexColor, textWrap: 'balance' }}
+                    >
+                      {selectedCode.id === 'all_clear' 
+                        ? 'إجراءات زوال الخطر التامة' 
+                        : `بروتوكول وإجراءات: ${selectedCode.nameAr}`}
+                    </div>
 
-                  {/* Chevrons list (Symmetrical or ordered grid) */}
-                  <div className="p-4 bg-white space-y-3">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3 dir-rtl">
-                      {selectedCode.actionsAr.map((text, idx) => (
-                        <div 
-                          key={idx}
-                          className="flex items-center justify-between p-3.5 rounded-xl border border-sky-100 bg-sky-50/50 hover:bg-sky-50 transition-colors relative group overflow-hidden"
-                        >
-                          {/* Semicircle side slash indicator */}
+                    {/* Chevrons list (Symmetrical or ordered grid) */}
+                    <div className="p-4 bg-white space-y-3">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 dir-rtl" style={{ direction: 'rtl' }}>
+                        {selectedCode.actionsAr.map((text, idx) => (
                           <div 
-                            className="absolute top-0 right-0 bottom-0 w-1.5"
-                            style={{ backgroundColor: selectedCode.hexColor }}
-                          />
+                            key={idx}
+                            className="flex items-center justify-between p-3.5 rounded-xl border border-sky-100 bg-sky-50/50 hover:bg-sky-50 transition-colors relative group overflow-hidden"
+                          >
+                            {/* Semicircle side slash indicator */}
+                            <div 
+                              className="absolute top-0 right-0 bottom-0 w-1.5"
+                              style={{ backgroundColor: selectedCode.hexColor }}
+                            />
 
-                          {/* Content */}
-                          <div className="flex items-center gap-3 pr-2 grow pl-2">
-                            <span className="p-1 rounded-lg bg-white shadow-3xs text-slate-600 shrink-0">
-                              {/* Action subicon fallback */}
-                              <Activity className="w-4 h-4 text-sky-600" />
-                            </span>
-                            <p 
-                              className="text-xs md:text-sm font-bold text-slate-800 leading-relaxed text-right text-balance"
-                              style={{ textWrap: 'balance' }}
-                            >
-                              {text}
-                            </p>
+                            {/* Content */}
+                            <div className="flex items-center gap-3 pr-2 grow pl-2">
+                              <span className="p-1 rounded-lg bg-white shadow-3xs text-slate-600 shrink-0">
+                                {/* Action subicon fallback */}
+                                <Activity className="w-4 h-4 text-sky-600" />
+                              </span>
+                              <p 
+                                className="text-xs md:text-sm font-bold text-slate-800 leading-relaxed text-right text-balance"
+                                style={{ textWrap: 'balance' }}
+                              >
+                                {text}
+                              </p>
+                            </div>
                           </div>
-                        </div>
-                      ))}
+                        ))}
+                      </div>
                     </div>
                   </div>
-                </div>
+                ) : (
+                  /* 2. ENGLISH PROCEDURES CARD */
+                  <div className="rounded-2xl border border-slate-200 overflow-hidden shadow-xs">
+                    {/* Topic Red/Blue Banner */}
+                    <div 
+                      className="py-3 px-5 text-center font-bold text-base md:text-lg text-white tracking-wide font-sans text-balance"
+                      style={{ backgroundColor: selectedCode.hexColor, textWrap: 'balance' }}
+                    >
+                      {selectedCode.id === 'all_clear' 
+                        ? 'ALL CLEAR PROCEDURES (System Secured)' 
+                        : `Protocol & Action Steps: ${selectedCode.nameEn}`}
+                    </div>
 
-                {/* 2. ENGLISH PROCEDURES CARD */}
-                <div className="rounded-2xl border border-slate-200 overflow-hidden shadow-xs">
-                  {/* Topic Red/Blue Banner */}
-                  <div 
-                    className="py-3 px-5 text-center font-bold text-base md:text-lg text-white tracking-wide font-sans text-balance"
-                    style={{ backgroundColor: selectedCode.hexColor, textWrap: 'balance' }}
-                  >
-                    {selectedCode.id === 'all_clear' 
-                      ? 'ALL CLEAR (Safety complete)' 
-                      : `${selectedCode.descriptionEn} (${selectedCode.nameEn})`}
-                  </div>
-
-                  {/* Chevrons list in English */}
-                  <div className="p-4 bg-white space-y-3">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3 dir-ltr">
-                      {selectedCode.actionsEn.map((text, idx) => (
-                        <div 
-                          key={idx}
-                          className="flex items-center justify-between p-3.5 rounded-xl border border-sky-100 bg-sky-50/50 hover:bg-sky-50 transition-colors relative group overflow-hidden"
-                        >
-                          {/* Semicircle side slash indicator */}
+                    {/* Chevrons list in English */}
+                    <div className="p-4 bg-white space-y-3">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 dir-ltr" style={{ direction: 'ltr' }}>
+                        {selectedCode.actionsEn.map((text, idx) => (
                           <div 
-                            className="absolute top-0 left-0 bottom-0 w-1.5"
-                            style={{ backgroundColor: selectedCode.hexColor }}
-                          />
+                            key={idx}
+                            className="flex items-center justify-between p-3.5 rounded-xl border border-sky-100 bg-sky-50/50 hover:bg-sky-50 transition-colors relative group overflow-hidden"
+                          >
+                            {/* Semicircle side slash indicator */}
+                            <div 
+                              className="absolute top-0 left-0 bottom-0 w-1.5"
+                              style={{ backgroundColor: selectedCode.hexColor }}
+                            />
 
-                          {/* Content */}
-                          <div className="flex items-center gap-3 pl-2 grow pr-2">
-                            <span className="p-1 rounded-lg bg-white shadow-3xs text-slate-600 shrink-0">
-                              <Activity className="w-4 h-4 text-sky-600" />
-                            </span>
-                            <p 
-                              className="text-xs md:text-sm font-bold text-slate-800 leading-relaxed text-left text-balance"
-                              style={{ textWrap: 'balance' }}
-                            >
-                              {text}
-                            </p>
+                            {/* Content */}
+                            <div className="flex items-center gap-3 pl-2 grow pr-2">
+                              <span className="p-1 rounded-lg bg-white shadow-3xs text-slate-600 shrink-0">
+                                <Activity className="w-4 h-4 text-sky-600" />
+                              </span>
+                              <p 
+                                className="text-xs md:text-sm font-bold text-slate-800 leading-relaxed text-left text-balance"
+                                style={{ textWrap: 'balance' }}
+                              >
+                                {text}
+                              </p>
+                            </div>
                           </div>
-                        </div>
-                      ))}
+                        ))}
+                      </div>
                     </div>
                   </div>
-                </div>
+                )}
 
                 {/* Speaker play option direct in modal */}
                 <div className="flex justify-between items-center bg-slate-50 p-3 rounded-xl border border-slate-200/60 max-w-md mx-auto">

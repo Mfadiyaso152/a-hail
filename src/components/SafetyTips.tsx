@@ -31,10 +31,10 @@ export default function SafetyTips({ isRtl }: SafetyTipsProps) {
         {/* Banner matching Slide 1 design */}
         <div className="flex-1 bg-sky-600 text-white py-2.5 px-6 rounded-full shadow-lg border border-sky-500 flex flex-col items-center justify-center min-w-0">
           <h2 className="text-base sm:text-lg md:text-xl font-black tracking-wide font-sans text-white text-center leading-tight">
-            نصائح السلامة أثناء الطوارئ
+            {isRtl ? 'نصائح السلامة وصيانة الأمان' : 'Emergency Safety & Incident Care'}
           </h2>
           <span className="text-[10px] md:text-xs font-bold tracking-widest text-sky-100 uppercase font-sans mt-0.5 text-center">
-            Emergency safety tips
+            {isRtl ? 'إرشادات تجمع حائل الصحي للسلامة' : 'HAIL HEALTH CLUSTER GENERAL SYSTEM GUIDANCE'}
           </span>
         </div>
       </div>
@@ -42,42 +42,44 @@ export default function SafetyTips({ isRtl }: SafetyTipsProps) {
       {/* ──────────────────────────────────────────────────────── */}
       {/* SECTION 1: GENERAL SAFETY INSTRUCTIONS / تعليمات السلامة العامة */}
       <div className="space-y-4">
-        <div className="text-center font-black text-lg text-rose-750 font-sans border-b border-rose-100 pb-2 text-balance" style={{ textWrap: 'balance' }}>
-          تعليمات السلامة العامة / General safety instructions
+        <div className="text-center font-black text-lg text-rose-700 font-sans border-b border-rose-100 pb-2 text-balance" style={{ textWrap: 'balance' }}>
+          {isRtl ? 'تعليمات وإرشادات السلامة العامة' : 'General safety instructions'}
         </div>
 
-        {/* 双栏对齐 - Two Columns split layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border border-slate-200 rounded-2xl overflow-hidden shadow-sm bg-slate-50/40">
+        {/* Unified single-column responsive panel */}
+        <div className="border border-slate-200 rounded-2xl overflow-hidden shadow-sm bg-slate-50/40 p-6 md:p-8">
           
-          {/* Right panel (Arabic - RTL) */}
-          <div className="p-6 space-y-3 font-sans text-right dir-rtl">
-            <div className="text-sky-700 font-extrabold text-xs tracking-wider uppercase mb-1">
-              إرشادات السلامة الأساسية:
-            </div>
-            {generalSafetyTips.map((tip, index) => (
-              <div key={tip.id} className="flex items-start gap-2.5">
-                <span className="text-red-500 font-black shrink-0 text-sm mt-0.5">•</span>
-                <p className="text-xs md:text-sm text-slate-800 font-bold leading-relaxed text-balance" style={{ textWrap: 'balance' }}>
-                  {tip.textAr}
-                </p>
+          {isRtl ? (
+            /* Arabic panel */
+            <div className="space-y-3.5 font-sans text-right" style={{ direction: 'rtl' }}>
+              <div className="text-sky-700 font-extrabold text-xs sm:text-sm tracking-wider uppercase mb-2">
+                إرشادات السلامة الأساسية بالمركز:
               </div>
-            ))}
-          </div>
-
-          {/* Left panel (English - LTR) - WITH VERTICAL BORDER DIVIDER ON ITS RIGHT SIDE IN RTL */}
-          <div className="p-6 space-y-3 font-sans text-left border-t md:border-t-0 md:border-r border-slate-200">
-            <div className="text-sky-700 font-extrabold text-xs tracking-wider uppercase mb-1">
-              General Guidelines:
+              {generalSafetyTips.map((tip) => (
+                <div key={tip.id} className="flex items-start gap-2.5">
+                  <span className="text-rose-500 font-black shrink-0 text-base mt-0.5">•</span>
+                  <p className="text-xs md:text-sm text-slate-800 font-bold leading-relaxed text-balance" style={{ textWrap: 'balance' }}>
+                    {tip.textAr}
+                  </p>
+                </div>
+              ))}
             </div>
-            {generalSafetyTips.map((tip, index) => (
-              <div key={tip.id} className="flex items-start gap-2.5">
-                <span className="text-red-500 font-black shrink-0 text-sm mt-0.5">•</span>
-                <p className="text-xs md:text-sm text-slate-800 font-bold leading-relaxed text-balance" style={{ textWrap: 'balance' }}>
-                  {tip.textEn}
-                </p>
+          ) : (
+            /* English panel */
+            <div className="space-y-3.5 font-sans text-left" style={{ direction: 'ltr' }}>
+              <div className="text-sky-700 font-extrabold text-xs sm:text-sm tracking-wider uppercase mb-2">
+                General Safety & Fire Prevention Rules:
               </div>
-            ))}
-          </div>
+              {generalSafetyTips.map((tip) => (
+                <div key={tip.id} className="flex items-start gap-2.5">
+                  <span className="text-rose-500 font-black shrink-0 text-base mt-0.5">•</span>
+                  <p className="text-xs md:text-sm text-slate-800 font-bold leading-relaxed text-balance" style={{ textWrap: 'balance' }}>
+                    {tip.textEn}
+                  </p>
+                </div>
+              ))}
+            </div>
+          )}
 
         </div>
       </div>

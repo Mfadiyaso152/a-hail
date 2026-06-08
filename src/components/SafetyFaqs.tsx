@@ -20,63 +20,59 @@ export default function SafetyFaqs({ isRtl }: SafetyFaqsProps) {
         {/* Banner matching Slide 3 */}
         <div className="flex-1 bg-sky-600 text-white py-2.5 px-6 rounded-full shadow-lg border border-sky-500 flex flex-col items-center justify-center min-w-0">
           <h2 className="text-base sm:text-lg md:text-xl font-black tracking-wide font-sans text-white text-center leading-tight">
-            الأسئلة الشائعة حول السلامة
+            {isRtl ? 'الأسئلة الشائعة حول السلامة' : 'Safety Frequently Asked Questions'}
           </h2>
           <span className="text-[10px] md:text-xs font-bold tracking-widest text-sky-100 uppercase font-sans mt-0.5 text-center">
-            Safety FAQ
+            {isRtl ? 'دليل إجابة استفسارات الأمان' : 'OFFICIAL HAIL HEALTH SAFETY ASSURANCE FAQ'}
           </span>
          </div>
       </div>
 
-      {/* FAQs Solid Table Grid matching Image 3 structure */}
+      {/* FAQs Solid Table Layout - Streamlined Single Column for Active Language */}
       <div className="border border-slate-200 rounded-2xl overflow-hidden shadow-sm bg-white">
         
-        {/* Column Headers */}
-        <div className="grid grid-cols-1 md:grid-cols-2 text-white font-extrabold text-sm md:text-base border-b border-sky-600">
-          {/* Right Column Header (Arabic) */}
-          <div className="bg-sky-500 py-3.5 px-6 text-right dir-rtl leading-none flex items-center justify-start">
-            الأسئلة الشائعة والأجوبة
-          </div>
-
-          {/* Left Column Header (English) - with right border for spacer */}
-          <div className="bg-sky-500 text-left py-3.5 px-6 border-t md:border-t-0 md:border-r border-sky-600 tracking-wider flex items-center justify-start">
-            Frequently Asked Questions & Answers
-          </div>
+        {/* Column Header */}
+        <div className="bg-sky-500 text-white font-extrabold text-sm md:text-base border-b border-sky-600 py-3.5 px-6 flex items-center gap-2">
+          <HelpCircle className="w-5 h-5 text-white shrink-0" />
+          <span>
+            {isRtl ? 'الأسئلة الشائعة والأجوبة الرسمية المعتمدة' : 'Official Emergency & Fire Guidance FAQs'}
+          </span>
         </div>
 
-        {/* FAQ Rows split symmetrically */}
-        <div className="divide-y divide-slate-200">
+        {/* FAQ Rows list conditionally rendered based on active language direction */}
+        <div className="divide-y divide-slate-100">
           {safetyFaqs.map((faq, index) => (
             <div 
               key={index}
               id={`faq-item-row-${index}`}
-              className="grid grid-cols-1 md:grid-cols-2 hover:bg-slate-50/50 transition-colors"
             >
-              {/* Right Cell (Arabic Q&A - RTL/Cairo) */}
-              <div className="p-5.5 space-y-2 text-right dir-rtl font-sans">
-                <div className="flex items-start gap-2 text-rose-700 font-black text-xs md:text-sm">
-                  <FileQuestion className="w-4.5 h-4.5 text-sky-600 shrink-0 mt-0.5" />
-                  <h4 className="leading-tight select-all text-balance" style={{ textWrap: 'balance' }}>
-                    {faq.questionAr}
-                  </h4>
+              {isRtl ? (
+                /* Arabic Cell (RTL) */
+                <div className="p-5 md:p-6 space-y-2 text-right font-sans hover:bg-slate-50/50 transition-colors" style={{ direction: 'rtl' }}>
+                  <div className="flex items-start gap-2.5 text-rose-700 font-extrabold text-xs sm:text-sm md:text-base">
+                    <FileQuestion className="w-5 h-5 text-sky-600 shrink-0 mt-0.5" />
+                    <h4 className="leading-tight select-all text-balance font-black" style={{ textWrap: 'balance' }}>
+                      {faq.questionAr}
+                    </h4>
+                  </div>
+                  <p className="text-xs md:text-sm font-bold text-slate-700 pr-7.5 leading-relaxed select-all text-balance font-sans" style={{ textWrap: 'balance' }}>
+                    {faq.answerAr}
+                  </p>
                 </div>
-                <p className="text-xs md:text-sm font-bold text-slate-850 pr-6.5 leading-relaxed select-all text-balance" style={{ textWrap: 'balance' }}>
-                  {faq.answerAr}
-                </p>
-              </div>
-
-              {/* Left Cell (English Q&A - LTR) - WITH VERTICAL BORDER DIVIDER */}
-              <div className="p-5.5 space-y-2 text-left border-t md:border-t-0 md:border-r border-slate-200">
-                <div className="flex items-start gap-2 text-rose-700 font-extrabold text-xs md:text-sm">
-                  <FileQuestion className="w-4.5 h-4.5 text-sky-600 shrink-0 mt-0.5" />
-                  <h4 className="leading-tight select-all text-balance" style={{ textWrap: 'balance' }}>
-                    {faq.questionEn}
-                  </h4>
+              ) : (
+                /* English Cell (LTR) */
+                <div className="p-5 md:p-6 space-y-2 text-left font-sans hover:bg-slate-50/50 transition-colors" style={{ direction: 'ltr' }}>
+                  <div className="flex items-start gap-2.5 text-rose-700 font-extrabold text-xs sm:text-sm md:text-base">
+                    <FileQuestion className="w-5 h-5 text-sky-600 shrink-0 mt-0.5" />
+                    <h4 className="leading-tight select-all text-balance font-black" style={{ textWrap: 'balance' }}>
+                      {faq.questionEn}
+                    </h4>
+                  </div>
+                  <p className="text-xs md:text-sm font-bold text-slate-700 pl-7.5 leading-relaxed select-all text-balance font-sans" style={{ textWrap: 'balance' }}>
+                    {faq.answerEn}
+                  </p>
                 </div>
-                <p className="text-xs md:text-sm font-bold text-slate-850 pl-6.5 leading-relaxed select-all text-balance" style={{ textWrap: 'balance' }}>
-                  {faq.answerEn}
-                </p>
-              </div>
+              )}
             </div>
           ))}
         </div>
