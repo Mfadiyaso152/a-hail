@@ -94,15 +94,6 @@ export default function App() {
 
           {/* SECTION 2: DISASTER DRILLS */}
           <div id="section-2-disaster" className="space-y-3 bg-white p-3.5 rounded-2xl border border-slate-200">
-
-            <div className="text-center font-sans">
-              <h3 className="text-sm font-black text-emerald-950">
-                {isRtl ? 'خطة الكوارث بمركز طب الأسنان' : 'Internal Disaster Plan (RACE/PASS)'}
-              </h3>
-              <p className="text-[9px] text-slate-400 font-mono mt-0.5">
-                {isRtl ? 'إجراءات احتواء والحد من الكوارث الداخلية' : 'DISASTER CONTAINMENT PROCEDURE'}
-              </p>
-            </div>
             
             <DisasterPlan
               isRtl={isRtl}
