@@ -11,6 +11,7 @@ import { DisasterPlan } from './components/DisasterPlan';
 import { SafetyTips } from './components/SafetyTips';
 import { SafetyFaqs } from './components/SafetyFaqs';
 import { ChevronDown, ChevronUp } from 'lucide-react';
+import FmsLogo from './components/FmsLogo';
 
 export default function App() {
   // Locale State: true = Arabic by default for Saudi Health Cluster
@@ -31,28 +32,34 @@ export default function App() {
   } = useEmergencyAnnouncer();
 
   return (
-    <div className="min-h-screen bg-slate-900 flex items-center justify-center p-0 md:p-4 transition-all duration-300">
+    <div className="min-h-screen bg-slate-100 flex flex-col transition-all duration-300">
       
-      {/* Dynamic Mobile App Viewport Container (Perfectly suited for mobile) */}
+      {/* Immersive Responsive Container - Spans full width/page on desktop, adaptive on mobile */}
       <div 
-        id="mobile-app-frame" 
-        className="w-full max-w-[480px] min-h-screen md:min-h-[850px] md:max-h-[920px] bg-slate-50 md:rounded-[42px] md:shadow-2xl md:border-[10px] md:border-slate-800 flex flex-col relative overflow-hidden text-right"
+        id="app-container" 
+        className="w-full max-w-5xl mx-auto min-h-screen bg-slate-50 flex flex-col relative text-right md:shadow-xl md:border-x md:border-slate-200"
         style={{ direction: 'rtl' }}
       >
         
-        {/* Dynamic Continuous Page Scroll Content Area (Stacked 4 Paragraphs on top of each other) */}
-        <div className="flex-1 overflow-y-auto pt-4 px-3 pb-8 space-y-6">
+        {/* Dynamic Continuous Page Scroll Content Area - Expanded for Desktop Comfort */}
+        <div className="flex-1 overflow-y-auto pt-6 px-4 md:px-8 pb-12 space-y-8">
           
           {/* SECTION 1: EMERGENCY CODES PAGER */}
-          <div id="section-1-codes" className="space-y-3 bg-white p-3.5 rounded-2xl border border-slate-200">
+          <div id="section-1-codes" className="space-y-4 bg-white p-4.5 rounded-2xl border border-slate-200 flex flex-col">
             
-            <div className="text-center font-sans">
-              <h3 className="text-sm font-black text-emerald-950">
-                رموز الطوارئ
-              </h3>
-              <p className="text-[9px] text-slate-400 font-mono mt-0.5">
-                EMERGENCY SYSTEM CODES
-              </p>
+            {/* Header Area with Title on the right, Logo on the left (automatically set by RTL flex-row) */}
+            <div className="flex items-center justify-between gap-4 border-b border-slate-100 pb-4 mb-1 select-none">
+              <div className="text-right font-sans flex-1">
+                <h3 className="text-base sm:text-lg md:text-xl font-black text-emerald-950 leading-tight">
+                  رموز الطوارئ
+                </h3>
+                <p className="text-[10px] sm:text-xs text-slate-400 font-mono mt-1 tracking-wide uppercase">
+                  EMERGENCY SYSTEM CODES
+                </p>
+              </div>
+              <div className="flex items-center justify-center shrink-0">
+                <FmsLogo size={58} hideText={true} className="bg-slate-50 p-2 rounded-2xl border border-slate-200 shadow-2xs" />
+              </div>
             </div>
 
             <EmergencyCodes

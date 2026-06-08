@@ -113,7 +113,6 @@ export default function EmergencyCodes({
 
           <div className="relative z-10 flex flex-col items-center text-center space-y-4">
             
-            {/* Title banner */}
             <div className="w-full max-w-xl bg-sky-600 text-white py-3 px-6 rounded-full shadow-lg border border-sky-500 flex flex-col items-center justify-center">
               <h2 className="text-xl md:text-2xl font-black tracking-wide font-sans leading-none text-white">
                 رموز الطوارئ
@@ -123,13 +122,9 @@ export default function EmergencyCodes({
               </span>
             </div>
 
-            {/* Blue Hotline Bar */}
-            <div className="w-full max-w-md bg-linear-to-r from-sky-500 to-sky-700 hover:from-sky-600 hover:to-sky-850 text-white py-3 px-5 rounded-full shadow-md flex items-center justify-center gap-3 border border-sky-400/30 transition-transform hover:scale-101 cursor-pointer">
-              <PhoneCall className="w-5 h-5 animate-bounce shrink-0 text-white" />
-              <div className="flex flex-col items-center justify-center leading-normal text-center select-none min-w-0">
-                <span className="font-sans text-sm md:text-base font-black tracking-wide whitespace-nowrap">اتصل بخط البلاغ بالمستشفى</span>
-                <span className="font-sans text-[10px] md:text-xs font-bold uppercase text-sky-100 mt-0.5 whitespace-nowrap">Call the Reporting Line</span>
-              </div>
+            {/* Red action guideline text block */}
+            <div className="font-sans font-black text-xs sm:text-sm text-red-650 tracking-wide text-center animate-pulse">
+              اضغط على الكود للانتقال الى صفحة الاجراءات
             </div>
 
           </div>
@@ -154,14 +149,14 @@ export default function EmergencyCodes({
                       {getCodeIcon(code.icon, code.textColor)}
                     </div>
                     
-                    <div className="font-sans font-black text-xs md:text-sm text-slate-800 tracking-tight uppercase select-none whitespace-nowrap">
+                    <div className="font-sans font-black text-xs md:text-sm text-slate-800 tracking-tight uppercase select-none whitespace-nowrap underline decoration-[1.5px] decoration-slate-300 underline-offset-4 group-hover:text-sky-600 group-hover:decoration-sky-500 transition-colors">
                       {code.nameEn}
                     </div>
                   </div>
 
                   {/* Middle Column/Part: Purpose translation (dynamic wrapping) */}
                   <div className="grow text-right px-2 sm:px-4">
-                    <span className="font-sans font-bold text-slate-900 group-hover:text-emerald-700 transition-colors text-xs md:text-sm leading-tight select-none break-words">
+                    <span className="font-sans font-bold text-slate-900 group-hover:text-sky-600 transition-colors text-xs md:text-sm leading-tight select-none break-words underline decoration-[1.5px] decoration-slate-300 underline-offset-4 group-hover:decoration-sky-600 transition-colors">
                       {code.descriptionAr}
                     </span>
                   </div>

@@ -6,7 +6,6 @@
 import React from 'react';
 import { HelpCircle, FileQuestion, ArrowRightLeft } from 'lucide-react';
 import { safetyFaqs } from '../data';
-import { FmsLogo } from './FmsLogo';
 
 interface SafetyFaqsProps {
   isRtl: boolean;
@@ -17,9 +16,9 @@ export default function SafetyFaqs({ isRtl }: SafetyFaqsProps) {
     <div className="bg-white rounded-3xl border border-slate-200 shadow-xl overflow-hidden max-w-4xl mx-auto p-6 md:p-8 space-y-10">
       
       {/* Custom customizable logo header info */}
-      <div className="flex flex-row items-center justify-center gap-3 w-full">
+      <div className="flex flex-row items-center justify-center w-full">
         {/* Banner matching Slide 3 */}
-        <div className="flex-1 bg-sky-600 text-white py-2 px-4 rounded-full shadow-lg border border-sky-500 flex flex-col items-center justify-center min-w-0">
+        <div className="flex-1 bg-sky-600 text-white py-2.5 px-6 rounded-full shadow-lg border border-sky-500 flex flex-col items-center justify-center min-w-0">
           <h2 className="text-base sm:text-lg md:text-xl font-black tracking-wide font-sans text-white text-center leading-tight">
             الأسئلة الشائعة حول السلامة
           </h2>
@@ -27,9 +26,6 @@ export default function SafetyFaqs({ isRtl }: SafetyFaqsProps) {
             Safety FAQ
           </span>
          </div>
-        
-        {/* Logo slightly larger and placed on the left. In RTL, placing it second in rendering tree places it on the left (West side). */}
-        <FmsLogo size={74} hideText={true} className="shrink-0" />
       </div>
 
       {/* FAQs Solid Table Grid matching Image 3 structure */}
