@@ -175,7 +175,7 @@ export default function EmergencyCodes({
                     
                     {/* Text container */}
                     <div className="flex flex-col justify-center">
-                      <span className="font-sans font-black text-slate-900 group-hover:text-sky-600 transition-colors text-xs sm:text-sm md:text-base leading-snug">
+                      <span className="font-sans font-black text-slate-900 group-hover:text-sky-600 transition-colors text-xs sm:text-sm md:text-base leading-snug underline decoration-sky-600/30 group-hover:decoration-sky-600 decoration-1 md:decoration-2 underline-offset-4">
                         {isRtl ? (code.id === 'all_clear' ? 'زوال الخطر' : code.nameAr) : code.nameEn}
                       </span>
                       {!isRtl && (
