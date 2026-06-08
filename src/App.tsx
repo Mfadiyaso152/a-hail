@@ -124,21 +124,11 @@ export default function App() {
             </button>
           </div>
 
-          {/* SECTION 3 & 4: GENERAL SAFETY & FAQ (Visually hidden unless showMore is true) */}
+          {/* SECTION 3: GENERAL SAFETY & FAQ (Visually hidden unless showMore is true) */}
           {showMore && (
             <div className="space-y-6 animate-fadeIn duration-500">
               {/* SECTION 3: GENERAL SAFETY & RESPONSIBILITIES */}
               <div id="section-3-safety" className="space-y-3 bg-white p-3.5 rounded-2xl border border-slate-200">
-
-                <div className="text-center font-sans">
-                  <h3 className="text-sm font-black text-emerald-950">
-                    {isRtl ? 'إرشادات السلامة العامة' : 'General Safety Guidelines'}
-                  </h3>
-                  <p className="text-[9px] text-slate-400 font-mono mt-0.5">
-                    {isRtl ? 'دليل إجراءات السلامة المعتمد بالمركز' : 'GENERAL SAFETY GUIDELINES'}
-                  </p>
-                </div>
-                
                 <SafetyTips
                   isRtl={isRtl}
                 />
@@ -146,16 +136,6 @@ export default function App() {
 
               {/* SECTION 4: SAFETY FAQ */}
               <div id="section-4-faqs" className="space-y-3 bg-white p-3.5 rounded-2xl border border-slate-200">
-
-                <div className="text-center font-sans">
-                  <h3 className="text-sm font-black text-emerald-950">
-                    {isRtl ? 'الأسئلة الشائعة في السلامة' : 'Safety Literacy FAQ'}
-                  </h3>
-                  <p className="text-[9px] text-slate-400 font-mono mt-0.5">
-                    {isRtl ? 'إجابات الأسئلة المتكررة حول الأمان' : 'SAFETY LITERACY FAQ'}
-                  </p>
-                </div>
-                
                 <SafetyFaqs
                   isRtl={isRtl}
                 />

@@ -31,20 +31,24 @@ export default function SafetyTips({ isRtl }: SafetyTipsProps) {
         {/* Banner matching Slide 1 design */}
         <div className="flex-1 bg-sky-600 text-white py-2.5 px-6 rounded-full shadow-lg border border-sky-500 flex flex-col items-center justify-center min-w-0">
           <h2 className="text-base sm:text-lg md:text-xl font-black tracking-wide font-sans text-white text-center leading-tight">
-            {isRtl ? 'نصائح السلامة وصيانة الأمان' : 'Emergency Safety & Incident Care'}
+            {isRtl ? 'نصائح السلامه اثناء الطوارئ' : 'Emergency Safety Tips'}
           </h2>
-          <span className="text-[10px] md:text-xs font-bold tracking-widest text-sky-100 uppercase font-sans mt-0.5 text-center">
-            {isRtl ? 'إرشادات تجمع حائل الصحي للسلامة' : 'HAIL HEALTH CLUSTER GENERAL SYSTEM GUIDANCE'}
-          </span>
+          {!isRtl && (
+            <span className="text-[10px] md:text-xs font-bold tracking-widest text-sky-100 uppercase font-sans mt-0.5 text-center">
+              HAIL HEALTH CLUSTER GENERAL SYSTEM GUIDANCE
+            </span>
+          )}
         </div>
       </div>
 
       {/* ──────────────────────────────────────────────────────── */}
       {/* SECTION 1: GENERAL SAFETY INSTRUCTIONS / تعليمات السلامة العامة */}
       <div className="space-y-4">
-        <div className="text-center font-black text-lg text-rose-700 font-sans border-b border-rose-100 pb-2 text-balance" style={{ textWrap: 'balance' }}>
-          {isRtl ? 'تعليمات وإرشادات السلامة العامة' : 'General safety instructions'}
-        </div>
+        {!isRtl && (
+          <div className="text-center font-black text-lg text-rose-700 font-sans border-b border-rose-100 pb-2 text-balance" style={{ textWrap: 'balance' }}>
+            General safety instructions
+          </div>
+        )}
 
         {/* Unified single-column responsive panel */}
         <div className="border border-slate-200 rounded-2xl overflow-hidden shadow-sm bg-slate-50/40 p-6 md:p-8">
