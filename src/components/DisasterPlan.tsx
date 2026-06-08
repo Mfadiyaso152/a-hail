@@ -177,35 +177,39 @@ export default function DisasterPlan({ isRtl, onAnnounceCodeRed }: DisasterPlanP
         </div>
       </div>
 
-      {/* ──────────────────────────────────────────────────────── */}
-      {/* 1. SECTION RACE: IN CASE OF FIRE / عند اكتشاف الحريق_ */}
+      {/* SECTION 1: RACE */}
       <div className="space-y-6">
         
         {/* red subtitle */}
-        <div className="text-center font-black font-sans border-b border-red-100 pb-2 flex flex-col items-center justify-center space-y-1">
-          <a 
-            href="https://youtu.be/wnnPbHzmh8k?si=CRo2NYwidG8X6r6C" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="hover:text-red-800 transition-colors cursor-pointer group flex flex-col items-center"
-          >
-            <span className="text-base md:text-lg text-red-650 tracking-wide uppercase font-black underline decoration-2 underline-offset-4 group-hover:text-red-800">
-              {isRtl ? 'خطوات الإطفاء (عند اكتشاف الحريق)' : 'IN CASE OF FIRE (Safety Steps)'}
-            </span>
-          </a>
+        <div className="text-center font-black font-sans border-b border-slate-100 pb-2 flex flex-col items-center justify-center space-y-1">
+          <span className="text-base md:text-lg text-emerald-950 tracking-wide uppercase font-black">
+            {isRtl ? 'خطوات الإطفاء (RACE)' : 'IN CASE OF FIRE (RACE Steps)'}
+          </span>
         </div>
 
+        {/* Small Red Indicator above the Symbol */}
+        <div className="text-center">
+          <span className="text-xs md:text-sm font-bold text-red-600 animate-pulse">
+            {isRtl ? 'اضغط على الرمز للانتقال إلى صفحة الإجراءات التفصيلية' : 'Click on the symbol to view detailed procedures'}
+          </span>
+        </div>
+ 
         {/* Huge RACE Double-ended Arrow */}
         <div className="flex items-center justify-center">
-          <div className="relative bg-sky-500 text-white text-3xl font-black font-sans px-10 py-2.5 rounded-md flex items-center justify-center shadow-lg">
+          <a 
+            href="https://youtu.be/JyZ_hShzKTM?si=L3LjP4EzBuc_b_XB" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="relative bg-sky-500 hover:bg-sky-600 transition-colors text-white text-3xl font-black font-sans px-10 py-2.5 rounded-md flex items-center justify-center shadow-lg cursor-pointer group"
+          >
             {/* left arrow point */}
-            <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-[22px] w-0 h-0 border-t-[28px] border-t-transparent border-b-[28px] border-b-transparent border-r-[24px] border-r-sky-500" />
+            <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-[22px] w-0 h-0 border-t-[28px] border-t-transparent border-b-[28px] border-b-transparent border-r-[24px] border-r-sky-500 group-hover:border-r-sky-600 transition-colors" />
             
-            <span>RACE</span>
+            <span className="underline decoration-2 underline-offset-4">RACE</span>
             
             {/* right arrow point */}
-            <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-[22px] w-0 h-0 border-t-[28px] border-t-transparent border-b-[28px] border-b-transparent border-l-[24px] border-l-sky-500" />
-          </div>
+            <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-[22px] w-0 h-0 border-t-[28px] border-t-transparent border-b-[28px] border-b-transparent border-l-[24px] border-l-sky-500 group-hover:border-l-sky-600 transition-colors" />
+          </a>
         </div>
 
         {/* RACE Split Grid Section - Responsive clean layout showing ONLY the active language to optimize space */}
@@ -221,7 +225,7 @@ export default function DisasterPlan({ isRtl, onAnnounceCodeRed }: DisasterPlanP
                   R
                 </span>
                 <div className="space-y-1">
-                  <span className="text-red-600 font-black text-sm block">إنقاذ المرضى والمراجعين (Rescue):</span>
+                  <span className="text-red-650 font-black text-sm block">إنقاذ المرضى والمراجعين (Rescue):</span>
                   <p className="text-xs md:text-sm text-slate-750 font-bold leading-relaxed text-balance" style={{ textWrap: 'balance' }}>
                     نقل وتأمين المرضى والزوار من مكان الخطر الفوري إلى أقرب مكان آمن.
                   </p>
@@ -234,11 +238,11 @@ export default function DisasterPlan({ isRtl, onAnnounceCodeRed }: DisasterPlanP
                   A
                 </span>
                 <div className="space-y-1">
-                  <span className="text-red-600 font-black text-sm block">تفعيل الإنذار والتبليغ (Activate Alarm):</span>
+                  <span className="text-red-650 font-black text-sm block">تفعيل الإنذار والتبليغ (Activate Alarm):</span>
                   <ul className="text-xs md:text-sm text-slate-750 font-bold list-disc pr-4 space-y-1">
                     <li className="text-balance" style={{ textWrap: 'balance' }}>أطلق نداء الشفرة الحمراء (Code Red) بصوت مرتفع لتنبيه زملائك.</li>
                     <li className="text-balance" style={{ textWrap: 'balance' }}>اتصل مباشرة برقم بلاغات الطوارئ بالمركز أو المنسق الأمني.</li>
-                    <li className="text-balance" style={{ textWrap: 'balance' }}>اسحب يد جهاز إنذار الحريق اليدوي المثبت بـ الجدار.</li>
+                    <li className="text-balance" style={{ textWrap: 'balance' }}>اسحب يد جهاز إنغار الحريق اليدوي المثبت بالجدار.</li>
                   </ul>
                 </div>
               </div>
@@ -249,11 +253,11 @@ export default function DisasterPlan({ isRtl, onAnnounceCodeRed }: DisasterPlanP
                   C
                 </span>
                 <div className="space-y-1">
-                  <span className="text-red-600 font-black text-sm block">احتواء وحصر الحريق (Contain Fire):</span>
+                  <span className="text-red-650 font-black text-sm block">احتواء وحصر الحريق (Contain Fire):</span>
                   <ul className="text-xs md:text-sm text-slate-750 font-bold list-disc pr-4 space-y-1">
                     <li className="text-balance" style={{ textWrap: 'balance' }}>أغلق أبواب الغرف والممرات للحد من انتشار النيران والدخان.</li>
                     <li className="text-balance" style={{ textWrap: 'balance' }}>قم بإغلاق صمام مغذي الأكسجين الطبي إن أمكن.</li>
-                    <li className="text-balance" style={{ textWrap: 'balance' }}>ضع مناشف أو عوائق مبتلة مبللة بالماء أسفل الأبواب المحتشدة.</li>
+                    <li className="text-balance" style={{ textWrap: 'balance' }}>ضع مناشف أو عوائق مبللة بالماء أسفل الأبواب المحتشدة.</li>
                   </ul>
                 </div>
               </div>
@@ -264,7 +268,7 @@ export default function DisasterPlan({ isRtl, onAnnounceCodeRed }: DisasterPlanP
                   E
                 </span>
                 <div className="space-y-1">
-                  <span className="text-red-600 font-black text-sm block text-balance" style={{ textWrap: 'balance' }}>الإطفاء السريع أو الإخلاء فوراً (Extinguish / Evacuate):</span>
+                  <span className="text-red-650 font-black text-sm block text-balance" style={{ textWrap: 'balance' }}>الإطفاء السريع أو الإخلاء فوراً (Extinguish / Evacuate):</span>
                   <p className="text-xs md:text-sm text-slate-750 font-bold leading-relaxed text-balance" style={{ textWrap: 'balance' }}>
                     استخدم مطفأة الحريق اليدوية إذا كان الحريق في بدايته صغيراً ومكشوفاً، وإلا باشر بإخلاء الجناح فوراً باتجاه مخارج الطوارئ الآمنة.
                   </p>
@@ -280,7 +284,7 @@ export default function DisasterPlan({ isRtl, onAnnounceCodeRed }: DisasterPlanP
                   R
                 </span>
                 <div className="space-y-1">
-                  <span className="text-red-600 font-black text-sm block">Rescue patients / visitors:</span>
+                  <span className="text-red-650 font-black text-sm block">Rescue patients / visitors:</span>
                   <p className="text-xs md:text-sm text-slate-700 font-bold leading-relaxed text-balance" style={{ textWrap: 'balance' }}>
                     Move and safeguard anyone in immediate danger of fire to the nearest safe refuge area.
                   </p>
@@ -293,7 +297,7 @@ export default function DisasterPlan({ isRtl, onAnnounceCodeRed }: DisasterPlanP
                   A
                 </span>
                 <div className="space-y-1">
-                  <span className="text-red-600 font-black text-sm block">Activate Alarm & report:</span>
+                  <span className="text-red-650 font-black text-sm block">Activate Alarm & report:</span>
                   <ul className="text-xs md:text-sm text-slate-700 font-bold list-disc pl-4 space-y-1">
                     <li className="text-balance" style={{ textWrap: 'balance' }}>Shout loud warning vocals "Code Red" for coworker awareness.</li>
                     <li className="text-balance" style={{ textWrap: 'balance' }}>Call the internal emergency hotline or the hospital duty officer.</li>
@@ -308,7 +312,7 @@ export default function DisasterPlan({ isRtl, onAnnounceCodeRed }: DisasterPlanP
                   C
                 </span>
                 <div className="space-y-1">
-                  <span className="text-red-600 font-black text-sm block">Contain Fire & smoke:</span>
+                  <span className="text-red-650 font-black text-sm block">Contain Fire & smoke:</span>
                   <ul className="text-xs md:text-sm text-slate-700 font-bold list-disc pl-4 space-y-1">
                     <li className="text-balance" style={{ textWrap: 'balance' }}>Close doors and windows to restrict drafts and seal flames.</li>
                     <li className="text-balance" style={{ textWrap: 'balance' }}>Shut off medical oxygen flow supply valves where safe.</li>
@@ -323,45 +327,50 @@ export default function DisasterPlan({ isRtl, onAnnounceCodeRed }: DisasterPlanP
                   E
                 </span>
                 <div className="space-y-1">
-                  <span className="text-red-600 font-black text-sm block text-balance" style={{ textWrap: 'balance' }}>Extinguish or Evacuate:</span>
+                  <span className="text-red-650 font-black text-sm block text-balance" style={{ textWrap: 'balance' }}>Extinguish or Evacuate:</span>
                   <p className="text-xs md:text-sm text-slate-700 font-bold leading-relaxed text-balance" style={{ textWrap: 'balance' }}>
-                    Attempt extinguishing only if the fire is very small and manageable. Otherwise, evacuate instantly using emergency stairwells.
+                    Use fire extinguisher if fire is small and in early stage, or evacuate immediately.
                   </p>
                 </div>
               </div>
             </div>
           )}
-
         </div>
       </div>
 
-      {/* ──────────────────────────────────────────────────────── */}
-      {/* 2. SECTION PASS: HOW TO US EXTINGUISHER / طريقة استخدام طفاية الحريق */}
-      <div className="space-y-6 pt-4">
+      {/* SECTION 2: PASS */}
+      <div className="space-y-6">
         
         {/* red subtitle */}
-        <div className="text-center font-black text-lg text-red-600 font-sans border-b border-red-100 pb-2">
-          <a 
-            href="https://youtu.be/JyZ_hShzKTM?si=L3LjP4EzBuc_b_XB" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="hover:text-red-800 transition-colors cursor-pointer underline decoration-2 underline-offset-4"
-          >
+        <div className="text-center font-black text-lg text-emerald-950 font-sans border-b border-slate-100 pb-2">
+          <span>
             {isRtl ? 'طريقة استخدام طفاية الحريق (PASS)' : 'HOW TO USE A FIRE EXTINGUISHER (PASS)'}
-          </a>
+          </span>
         </div>
 
+        {/* Small Red Indicator above the Symbol */}
+        <div className="text-center">
+          <span className="text-xs md:text-sm font-bold text-red-600 animate-pulse">
+            {isRtl ? 'اضغط على الرمز للانتقال إلى صفحة الإجراءات التفصيلية' : 'Click on the symbol to view detailed procedures'}
+          </span>
+        </div>
+ 
         {/* Huge PASS Double-ended Arrow */}
         <div className="flex items-center justify-center">
-          <div className="relative bg-sky-500 text-white text-3xl font-black font-sans px-10 py-2.5 rounded-md flex items-center justify-center shadow-lg">
+          <a 
+            href="https://youtu.be/wnnPbHzmh8k?si=CRo2NYwidG8X6r6C" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="relative bg-sky-500 hover:bg-sky-600 transition-colors text-white text-3xl font-black font-sans px-10 py-2.5 rounded-md flex items-center justify-center shadow-lg cursor-pointer group"
+          >
             {/* left arrow point */}
-            <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-[22px] w-0 h-0 border-t-[28px] border-t-transparent border-b-[28px] border-b-transparent border-r-[24px] border-r-sky-500" />
+            <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-[22px] w-0 h-0 border-t-[28px] border-t-transparent border-b-[28px] border-b-transparent border-r-[24px] border-r-sky-500 group-hover:border-r-sky-600 transition-colors" />
             
-            <span>PASS</span>
+            <span className="underline decoration-2 underline-offset-4">PASS</span>
             
             {/* right arrow point */}
-            <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-[22px] w-0 h-0 border-t-[28px] border-t-transparent border-b-[28px] border-b-transparent border-l-[24px] border-l-sky-500" />
-          </div>
+            <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-[22px] w-0 h-0 border-t-[28px] border-t-transparent border-b-[28px] border-b-transparent border-l-[24px] border-l-sky-500 group-hover:border-l-sky-600 transition-colors" />
+          </a>
         </div>
 
         {/* Flow of letters P-A-S-S with adaptive single-language subtitle */}
